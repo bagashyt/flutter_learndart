@@ -4,27 +4,37 @@ void main() {
   runApp(new MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int number = 1;
+  String message = "ini adalah Text";
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Aplikasi Hello World"),
+          title: Text("Anonymous Method"),
         ),
         body: Center(
-            child: Container(
-                color: Colors.lightBlue,
-                width: 150,
-                height: 100,
-                child: Text(
-                  "Saya sedang melatih kemampuan flutter saya.",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 20),
-                ))),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(message),
+                RaisedButton(
+                  child: Text("Tekan Saya"),
+                    onPressed: (){
+                    setState(() {
+                      message = "Tombol sudah ditekan ${(number++).toString()} kali";
+                    });
+                    })
+              ],
+          ),
+        ),
       ),
     );
   }
