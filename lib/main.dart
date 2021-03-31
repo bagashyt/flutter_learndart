@@ -10,21 +10,21 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Aplikasi Hello World"),
+          title: Text("Latihan text Style"),
         ),
         body: Center(
-            child: Container(
-                color: Colors.lightBlue,
-                width: 150,
-                height: 100,
-                child: Text(
-                  "Saya sedang melatih kemampuan flutter saya.",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 20),
-                ))),
+          child: Text(
+            "Ini adalah Text",
+            style: TextStyle(
+                fontFamily: "Roboto",
+                fontStyle: FontStyle.normal,
+                fontSize: 30,
+                decoration: TextDecoration.overline,
+                decorationColor: Colors.green,
+                decorationThickness: 5,
+                decorationStyle: TextDecorationStyle.wavy),
+          ),
+        ),
       ),
     );
   }
