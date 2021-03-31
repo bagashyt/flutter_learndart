@@ -4,28 +4,51 @@ void main() {
   runApp(new MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  List<Widget> widgets = [];
+  int counter = 1;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Aplikasi Hello World"),
-        ),
-        body: Center(
-            child: Container(
-                color: Colors.lightBlue,
-                width: 150,
-                height: 100,
-                child: Text(
-                  "Saya sedang melatih kemampuan flutter saya.",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 20),
-                ))),
+        home: Scaffold(
+      appBar: AppBar(
+        title: Text("Latihan ListView"),
       ),
-    );
+      body: ListView(
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              RaisedButton(
+                  child: Text("Tambah Data"),
+                  onPressed: () {
+                    setState(() {
+                      widgets.add(Text(
+                        "Data ke-" + counter.toString(),
+                        style: TextStyle(fontSize: 35),
+                      ));
+                      counter++;
+                    });
+                  }),
+              RaisedButton(child: Text("Hapus Data"), onPressed: () {
+                setState(() {
+                  widgets.removeLast();
+                  counter--;
+                });
+              }),
+            ],
+          ),
+          Column(
+            children: widgets,
+          )
+        ],
+      ),
+    ));
   }
 }
