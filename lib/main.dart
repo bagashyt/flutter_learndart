@@ -10,21 +10,62 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Aplikasi Hello World"),
+          title: Text("Flexible Layout"),
         ),
-        body: Center(
-            child: Container(
-                color: Colors.lightBlue,
-                width: 150,
-                height: 100,
-                child: Text(
-                  "Saya sedang melatih kemampuan flutter saya.",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 20),
-                ))),
+        body: Column(
+          children: <Widget>[
+            Flexible(
+              flex: 1,
+              child: Row(
+                children: <Widget>[
+                  Flexible(
+                    flex: 1,
+                    child: Container(
+                      color: Colors.green,
+                    ),
+                  ),
+                  Flexible(
+                    flex: 1,
+                    child: Container(
+                      color: Colors.amber,
+                    ),
+                  ),
+                  Flexible(
+                    flex: 1,
+                    child: Container(
+                      color: Colors.purple,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Flexible(
+              flex: 2,
+              child: Container(
+                color: Colors.blue,
+              ),
+            ),
+            Flexible(
+              flex: 1,
+              child: Row(
+                children: <Widget>[
+                  Flexible(
+                    flex: 1,
+                    child: Container(
+                      color: Colors.red,
+                    ),
+                  ),
+                  Flexible(
+                    flex: 1,
+                    child: Container(
+                      color: Colors.indigoAccent,
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
