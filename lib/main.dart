@@ -25,6 +25,15 @@ class _MyAppState extends State<MyApp> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               TextField(
+                decoration: InputDecoration(
+                  icon: Icon(Icons.print),
+                  prefixIcon: Icon(Icons.account_box),
+                  prefixText: "Name: ",
+                  labelText: "Nama Lengkap",
+                  hintText: "Di isi dengan nama lengkap",
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                ),
                 onChanged: (value) {
                   setState(() {});
                 },
