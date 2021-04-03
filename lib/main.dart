@@ -9,23 +9,31 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text("Aplikasi Hello World"),
+        backgroundColor: Colors.green,
+        body: Container(
+          margin: EdgeInsets.all(10),
+          child: ListView(
+            children: <Widget>[
+              buildCard(Icons.account_box, "Account Box"),
+              buildCard(Icons.restaurant, "Restaurant"),
+            ],
+          ),
         ),
-        body: Center(
-            child: Container(
-                color: Colors.lightBlue,
-                width: 150,
-                height: 100,
-                child: Text(
-                  "Saya sedang melatih kemampuan flutter saya.",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 20),
-                ))),
       ),
     );
+  }
+
+  Card buildCard(IconData iconData, String text) {
+    return Card(
+              elevation: 5,
+              child: Row(
+                children: <Widget>[
+                  Container(
+                      margin: EdgeInsets.all(5),
+                      child: Icon(iconData)),
+                  Text(text),
+                ],
+              ),
+            );
   }
 }
