@@ -8,24 +8,43 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Aplikasi Hello World"),
-        ),
-        body: Center(
-            child: Container(
-                color: Colors.lightBlue,
-                width: 150,
-                height: 100,
-                child: Text(
-                  "Saya sedang melatih kemampuan flutter saya.",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 20),
-                ))),
-      ),
+      home: MainPage(),
     );
+  }
+}
+
+class MainPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Latihan MediaQuery")),
+      body: (MediaQuery.of(context).orientation == Orientation.portrait)
+          ? Column(
+              children: generateContainers(),
+            )
+          : Row(
+              children: generateContainers(),
+            ),
+    );
+  }
+
+  List<Widget> generateContainers() {
+    return <Widget>[
+      Container(
+        color: Colors.green,
+        width: 100,
+        height: 100,
+      ),
+      Container(
+        color: Colors.red,
+        width: 100,
+        height: 100,
+      ),
+      Container(
+        color: Colors.blue,
+        width: 100,
+        height: 100,
+      ),
+    ];
   }
 }
