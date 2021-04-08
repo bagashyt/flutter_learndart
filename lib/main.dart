@@ -1,30 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learndart/post_result_model.dart';
 
 void main() {
   runApp(new MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  PostResult postResult = null;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Aplikasi Hello World"),
+          title: Text("Latihan API"),
         ),
         body: Center(
-            child: Container(
-                color: Colors.lightBlue,
-                width: 150,
-                height: 100,
-                child: Text(
-                  "Saya sedang melatih kemampuan flutter saya.",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 20),
-                ))),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Text((postResult != null)
+                  ? postResult.id +
+                      " | " +
+                      postResult.name +
+                      " | " +
+                      postResult.job +
+                      " | " +
+                      postResult.created
+                  : "Tidak ada data"),
+              RaisedButton(
+                onPressed: () {
+                  PostResult.connectToAPI("Badu", "Dokter").then((value) {
+                    postResult = value;
+                    setState(() {});
+                  });
+                },
+                child: Text("POST"),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
